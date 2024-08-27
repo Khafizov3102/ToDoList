@@ -62,7 +62,15 @@ final class TaskDetailViewController: UIViewController, TaskDetailViewProtocol {
     func setupView(task: TaskEntity?) {
         titleTextField.text = task?.title
         descriptionTextView.text = task?.description
-        dateLabel.text = task?.createdAt.description
+        
+        if let createdAt = task?.createdAt {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "Дата: dd.MM.yyyy HH:mm"
+            dateLabel.text = dateFormatter.string(from: createdAt)
+        } else {
+            dateLabel.text = nil
+        }
+        
         completedSwitch.isOn = task?.isCompleted ?? false
     }
     
