@@ -33,15 +33,15 @@ extension TaskListPresenter: TaskListPresenterProtocol {
         view?.showLoading()
         interactor?.fetchTask()
     }
-    
+
     func didSelectTask(task: TaskEntity) {
         router?.navigateToTaskDetail(task: task)
     }
-    
+
     func didTapAddButton() {
         router?.navigateToTaskDetail(task: nil)
     }
-    
+
     func didSwipeToDeleteTask(task: TaskEntity) {
         interactor?.deleteTask(task: task)
     }
@@ -53,16 +53,16 @@ extension TaskListPresenter: TaskListInteractorOutputProtocol {
         view?.hideLoading()
         view?.showTasks(tasks: tasks)
     }
-    
+
     func didFailToFetchTasks(error: Error) {
         view?.hideLoading()
         view?.showError(message: error.localizedDescription)
     }
-    
+
     func didDeleteTask() {
         interactor?.fetchTask()
     }
-    
+
     func didFailToDeleteTask(error: Error) {
         view?.showError(message: error.localizedDescription)
     }

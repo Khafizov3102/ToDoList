@@ -27,6 +27,8 @@
 		2DEAC3B62C7AA4BB0021E009 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAC3B52C7AA4BB0021E009 /* TaskDetailView.swift */; };
 		2DEAC3F92C7E17890021E009 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAC3F82C7E17890021E009 /* TaskCell.swift */; };
 		2DEAC3FB2C7E19C20021E009 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAC3FA2C7E19C20021E009 /* NetworkError.swift */; };
+		2DEAC3FD2C7E8D4F0021E009 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAC3FC2C7E8D4F0021E009 /* TaskService.swift */; };
+		2DEAC3FF2C7E8D930021E009 /* TaskAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAC3FE2C7E8D930021E009 /* TaskAPIModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		2DEAC3B52C7AA4BB0021E009 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		2DEAC3F82C7E17890021E009 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		2DEAC3FA2C7E19C20021E009 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		2DEAC3FC2C7E8D4F0021E009 /* TaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
+		2DEAC3FE2C7E8D930021E009 /* TaskAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAPIModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,10 +92,10 @@
 				2DEAC3AE2C7A92A90021E009 /* TaskDetail */,
 				2DEAC3912C7A50E30021E009 /* TaskList */,
 				2DEAC38B2C7A47AD0021E009 /* Services */,
+				2DEAC3902C7A4A3E0021E009 /* Entity */,
 				2DEAC3882C7A47220021E009 /* SupportingFiles */,
 				2DEAC3892C7A47370021E009 /* Resources */,
 				2DEAC38A2C7A47560021E009 /* Storyboards */,
-				2DEAC3902C7A4A3E0021E009 /* Entity */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -128,6 +132,7 @@
 				2DEAC38C2C7A47D70021E009 /* NetworkManager.swift */,
 				2DEAC3942C7A67640021E009 /* CoreDataService.swift */,
 				2DEAC3FA2C7E19C20021E009 /* NetworkError.swift */,
+				2DEAC3FC2C7E8D4F0021E009 /* TaskService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				2DEAC38E2C7A4A360021E009 /* TaskEntity.swift */,
+				2DEAC3FE2C7E8D930021E009 /* TaskAPIModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -246,6 +252,8 @@
 				2DEAC3B62C7AA4BB0021E009 /* TaskDetailView.swift in Sources */,
 				2DEAC3F92C7E17890021E009 /* TaskCell.swift in Sources */,
 				2DEAC38F2C7A4A360021E009 /* TaskEntity.swift in Sources */,
+				2DEAC3FF2C7E8D930021E009 /* TaskAPIModel.swift in Sources */,
+				2DEAC3FD2C7E8D4F0021E009 /* TaskService.swift in Sources */,
 				2DEAC3A12C7A848E0021E009 /* TaskListPresenter.swift in Sources */,
 				2DEAC3AB2C7A91700021E009 /* Task+CoreDataClass.swift in Sources */,
 				2DEAC3AC2C7A91700021E009 /* Task+CoreDataProperties.swift in Sources */,

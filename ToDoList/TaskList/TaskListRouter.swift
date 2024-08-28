@@ -17,10 +17,12 @@ final class TaskListRouter {
     static func createModule() -> UIViewController {
         let view = TaskListViewController()
         let presenter = TaskListPresenter()
-        let interactor = TaskListInteractor(
-            networkManager: NetworkManager(),
-            coreDataService: CoreDataService()
-        )
+        
+        let networkManager = NetworkManager()
+        let tasksService = TasksService(networkManager: networkManager)
+        let coreDataService = CoreDataService()
+        let interactor = TaskListInteractor(tasksService: tasksService, coreDataService: coreDataService)
+        
         let router = TaskListRouter()
         
         view.presenter = presenter
@@ -36,7 +38,7 @@ final class TaskListRouter {
 
 extension TaskListRouter: TaskListRouterProtocol {
     func navigateToTaskDetail(task: TaskEntity? = nil) {
-        let taskDetailVC = TaskDetailRouter.creteModule(task: task)
+        let taskDetailVC = TaskDetailRouter.createModule(task: task)
         viewController?.navigationController?.pushViewController(taskDetailVC, animated: true)
     }
 }

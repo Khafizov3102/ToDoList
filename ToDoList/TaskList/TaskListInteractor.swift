@@ -21,13 +21,13 @@ protocol TaskListInteractorOutputProtocol: AnyObject {
 
 final class TaskListInteractor {
     weak var presenter: TaskListInteractorOutputProtocol?
-    private let networkManager: NetworkManagerProtocol
-    private let coreDatasService: CoreDataServiceProtocol
+    private let tasksService: TasksServiceProtocol
+    private let coreDataService: CoreDataServiceProtocol
     private let userDefaults = UserDefaults.standard
-    
-    init(networkManager: NetworkManagerProtocol, coreDataService: CoreDataServiceProtocol) {
-        self.networkManager = networkManager
-        self.coreDatasService = coreDataService
+
+    init(tasksService: TasksServiceProtocol, coreDataService: CoreDataServiceProtocol) {
+        self.tasksService = tasksService
+        self.coreDataService = coreDataService
     }
 }
 
@@ -35,7 +35,7 @@ final class TaskListInteractor {
 extension TaskListInteractor: TaskListInteractorInputProtocol {
     func fetchTask() {
         if userDefaults.bool(forKey: "hasLoadedInitialData") {
-            coreDatasService.fetchTasks { [weak self] result in
+            coreDataService.fetchTasks { [weak self] result in
                 switch result {
                 case .success(let tasks):
                     self?.presenter?.didFetchTasks(tasks: tasks)
@@ -44,12 +44,12 @@ extension TaskListInteractor: TaskListInteractorInputProtocol {
                 }
             }
         } else {
-            networkManager.fetchTasks { [weak self] result in
+            tasksService.fetchTasks { [weak self] result in
                 switch result {
                 case .success(let tasks):
-                    self?.coreDatasService.saveTasks(tasks, completion: { [weak self] result in
+                    self?.coreDataService.saveTasks(tasks, completion: { [weak self] result in
                         switch result {
-                        case .success(_):
+                        case .success:
                             self?.userDefaults.set(true, forKey: "hasLoadedInitialData")
                             self?.presenter?.didFetchTasks(tasks: tasks)
                         case .failure(let error):
@@ -62,9 +62,9 @@ extension TaskListInteractor: TaskListInteractorInputProtocol {
             }
         }
     }
-    
+
     func deleteTask(task: TaskEntity) {
-        coreDatasService.deleteTask(task) { [weak self] result in
+        coreDataService.deleteTask(task) { [weak self] result in
             switch result {
             case .success:
                 self?.presenter?.didDeleteTask()

@@ -13,21 +13,22 @@ protocol TaskDetailRouterProtocol {
 
 final class TaskDetailRouter {
     weak var viewController: UIViewController?
-    
-    static func creteModule(task: TaskEntity? = nil) -> UIViewController {
+
+    static func createModule(task: TaskEntity? = nil) -> UIViewController {
         let view = TaskDetailViewController()
         let presenter = TaskDetailPresenter()
         let interactor = TaskDetailInteractor(coreDataService: CoreDataService())
         let router = TaskDetailRouter()
-        
+
         view.presenter = presenter
         presenter.view = view
         presenter.interactor = interactor
         presenter.router = router
         interactor.presenter = presenter
-        presenter.task = task
         router.viewController = view
-        
+
+        presenter.task = task
+
         return view
     }
 }
